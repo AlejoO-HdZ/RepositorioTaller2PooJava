@@ -26,7 +26,7 @@ public class ClasePrincipalAnimales { // Clase principal animal
 
         mostrarClasificacion(); // Mostrar clasificación de animales porc categoria
     }
-// Punto 1d) Almacena en el map la clase y muestra luego los animales.
+// Punto 1c) Almacenamiento en el map la clase que muestra luego los animales.
     /** Metodo para agregar un animal a la lista y clasificarlo.
      * - Solicita datos por consola.
      * - Crea un objeto `Animal`.
@@ -50,7 +50,7 @@ public class ClasePrincipalAnimales { // Clase principal animal
      * - Recorre el `TreeMap` y muestra los animales por categoría.
      * - Usa `substring(0,1).toUpperCase()` para capitalizar la primera letra del tipo.
      */
-    //1d) Almacena en el map la clase y muestra luego los animales.
+    //1d) Almacenamiento en el map la clase y muestra luego los animales.
     //1e) El resultado se muestra en consola al fianlizar el pedido de datos:
     private void mostrarClasificacion() {
         System.out.println("\nClasificación de Animales:");
