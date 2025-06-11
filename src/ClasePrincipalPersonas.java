@@ -54,6 +54,9 @@ public class ClasePrincipalPersonas {
         // Punto 2a) Cantidad de personas almacenadas
         System.out.println("\nCantidad de personas: " + personas.size());
 
+        // Punto 2b) Promedio de edades de personas (average)
+        double promedioEdad = personas.stream().mapToInt(Persona::getEdad).average().orElse(0);
+        System.out.println("Promedio de edades: " + promedioEdad);
 
     }
     /**
