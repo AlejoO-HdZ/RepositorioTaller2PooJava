@@ -66,6 +66,10 @@ public class ClasePrincipalPersonas {
         System.out.println("Personas con nombre que empieza con 'A':");
         personas.stream().filter(p -> p.getNombre().startsWith("A")).forEach(System.out::println);
 
+        // Punto 2e) Personas cuyos apellidos contienen la letra "M"
+        System.out.println("Personas con apellido que contiene 'M':");
+        personas.stream().filter(p -> p.getApellido().contains("M")).forEach(System.out::println);
+
     }
     /**
      * Metodo principal para ejecutar la aplicación.
