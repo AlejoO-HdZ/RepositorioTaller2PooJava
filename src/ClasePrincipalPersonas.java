@@ -58,6 +58,10 @@ public class ClasePrincipalPersonas {
         double promedioEdad = personas.stream().mapToInt(Persona::getEdad).average().orElse(0);
         System.out.println("Promedio de edades: " + promedioEdad);
 
+        // Punto 2c) Cantidad de personas mayores de edad (mayor o igual a 18 años)
+        long mayoresEdad = personas.stream().filter(p -> p.getEdad() >= 18).count();
+        System.out.println("Cantidad de mayores de edad: " + mayoresEdad);
+
     }
     /**
      * Metodo principal para ejecutar la aplicación.
