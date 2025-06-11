@@ -47,3 +47,19 @@ public class ClasePrincipalPersonas {
 
         personas.add(new Persona(nombre, apellido, edad, genero, sueldoHora, cargo));
     }
+    /**
+     * 2) Metodo para realizar operaciones con Streams y Lambdas.
+     */
+    private void realizarOperaciones() {
+        // Punto 2a) Cantidad de personas almacenadas
+        System.out.println("\nCantidad de personas: " + personas.size());
+
+
+    }
+    /**
+     * Metodo principal para ejecutar la aplicación.
+     */
+    public static void main(String[] args) {
+        new ClasePrincipalPersonas().ejecutar();
+    }
+}
