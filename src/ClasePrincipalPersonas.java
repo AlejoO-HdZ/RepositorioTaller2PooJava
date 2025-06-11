@@ -62,6 +62,10 @@ public class ClasePrincipalPersonas {
         long mayoresEdad = personas.stream().filter(p -> p.getEdad() >= 18).count();
         System.out.println("Cantidad de mayores de edad: " + mayoresEdad);
 
+        // Punto 2d) Personas cuyos nombres empiezan con "A"
+        System.out.println("Personas con nombre que empieza con 'A':");
+        personas.stream().filter(p -> p.getNombre().startsWith("A")).forEach(System.out::println);
+
     }
     /**
      * Metodo principal para ejecutar la aplicación.
