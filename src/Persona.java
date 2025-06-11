@@ -19,8 +19,25 @@ public class Persona {
      * @param sueldoHora Sueldo por hora de la persona.
      * @param cargo Cargo de la persona.
      */
+    // PLUS ACTIVIDAD VALIDACION EN CONSTRUCTOR DE ENTRADAS ADECUADAS Y CORRECTAS (nombre, apellido, edad, genero y sueldo)
     // Constructor para inicializar los valores.
     public Persona(String nombre, String apellido, int edad, String genero, double sueldoHora, String cargo) {
+        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+            throw new IllegalArgumentException("Error: El nombre solo debe contener letras.");
+        }
+        if (!apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+            throw new IllegalArgumentException("Error: El apellido solo debe contener letras.");
+        }
+        if (edad <= 0 || edad > 120) {
+            throw new IllegalArgumentException("Error: La edad debe ser un número positivo menor a 120.");
+        }
+        if (!genero.equalsIgnoreCase("M") && !genero.equalsIgnoreCase("F")) {
+            throw new IllegalArgumentException("Error: El género debe ser 'M' o 'F'.");
+        }
+        if (sueldoHora <= 0) {
+            throw new IllegalArgumentException("Error: El sueldo por hora debe ser un número positivo.");
+        }
+
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
@@ -28,6 +45,7 @@ public class Persona {
         this.sueldoHora = sueldoHora;
         this.cargo = cargo;
     }
+
 
     // Getters y Setters, Se incluyen los métodos Getters para acceder a los atributos.
     public String getNombre() { return nombre; }
@@ -42,4 +60,5 @@ public class Persona {
         return nombre + " " + apellido + " - " + cargo;
     }
 }
+
 

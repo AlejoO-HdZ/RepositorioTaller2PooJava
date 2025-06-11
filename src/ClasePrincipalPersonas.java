@@ -1,6 +1,5 @@
 import java.util.*;
 import java.util.stream.Collectors;
-
 /* PUNTO 2) CREAR UNA CLASE PRINCIPAL PERSONAS : Gestiona lista de personas, realiza operaciones con Streams y Lambdas.
  * - Usa un `ArrayList<Persona>` llamado `personas` para almacenar los datos ingresados.
  * - Implementa métodos para agregar personas y realizar cálculos con Streams. */
@@ -12,43 +11,47 @@ public class ClasePrincipalPersonas {
     // Metodo principal para ejecutar el programa.
     public void ejecutar() {
         System.out.println("INGRESE LA CANTIDAD DE PERSONAS:");
-        int cantidad = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        int cantidad = validarEnteroPositivo();
+
         for (int i = 0; i < cantidad; i++) {
             agregarPersona(); // Llenar la lista de personas
         }
-        realizarOperaciones(); // Realizar operaciones básicas con Streams
-
+        // Realizar operaciones básicas con Streams
+        realizarOperaciones();
         // Llamar a la clase `OperacionesPersonas` para ejecutar operaciones avanzadas
         OperacionesPersonas operaciones = new OperacionesPersonas(personas);
         operaciones.ejecutarOperaciones();
     }
 
     /**
-     * Metodo para agregar una persona a la lista.
+     * Metodo para agregar una persona a la lista con validaciones.
      * - Solicita datos por consola.
      * - Crea un objeto `Persona` y lo agrega a la lista.
      */
     private void agregarPersona() {
         System.out.println("Ingrese nombre:");
-        String nombre = scanner.nextLine();
+        String nombre = validarTexto();
+
         System.out.println("Ingrese apellido:");
-        String apellido = scanner.nextLine();
+        String apellido = validarTexto();
+
         System.out.println("Ingrese edad:");
-        int edad = scanner.nextInt();
-        scanner.nextLine();
+        int edad = validarEnteroPositivo();
+
         System.out.println("Ingrese género (M/F):");
-        String genero = scanner.nextLine().toUpperCase();
+        String genero = validarGenero();
+
         System.out.println("Ingrese sueldo por hora:");
-        double sueldoHora = scanner.nextDouble();
-        scanner.nextLine();
+        double sueldoHora = validarDoublePositivo();
+
         System.out.println("Ingrese cargo:");
         String cargo = scanner.nextLine();
 
         personas.add(new Persona(nombre, apellido, edad, genero, sueldoHora, cargo));
     }
+    // PLUS ACTIVIDAD VALIDACION ENTRADAS ADECUADAS Y CORRECTAS: TEXTO, ENTERO , DECIMAL o GENERO M/F (nombre, apellido, edad, genero y sueldo)
     /**
-     * 2) Metodo para realizar operaciones con Streams y Lambdas.
+     * Metodo para realizar operaciones básicas con Streams y Lambdas.
      */
     private void realizarOperaciones() {
         // Punto 2a) Cantidad de personas almacenadas
@@ -69,12 +72,74 @@ public class ClasePrincipalPersonas {
         // Punto 2e) Personas cuyos apellidos contienen la letra "M"
         System.out.println("Personas con apellido que contiene 'M':");
         personas.stream().filter(p -> p.getApellido().contains("M")).forEach(System.out::println);
-
     }
+
+// PLUS DE ACTIVIDAD VALIDACION EDAD (Entero Mayor a 0)
     /**
-     * Metodo principal para ejecutar la aplicación.
+     * Metodo para validar que el usuario ingrese un número entero positivo.
      */
-    public static void main(String[] args) {
-        new ClasePrincipalPersonas().ejecutar();
+    private int validarEnteroPositivo() {
+        int numero;
+        while (true) {
+            try {
+                numero = Integer.parseInt(scanner.nextLine());
+                if (numero > 0) {
+                    return numero;
+                } else {
+                    System.out.println("Error: Debe ingresar un número positivo.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Debe ingresar un número válido.");
+            }
+        }
+    }
+// PLUS DE ACTIVIDAD VALIDACION NOMBRE Y APELLIDO (Solo valores texto)
+    /**
+     * Metodo para validar que el usuario ingrese un texto sin números.
+     */
+    private String validarTexto() {
+        String texto;
+        while (true) {
+            texto = scanner.nextLine();
+            if (texto.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+                return texto;
+            } else {
+                System.out.println("Error: Solo se permiten letras.");
+            }
+        }
+    }
+// PLUS DE ACTIVIDAD VALIDACION GENERO (Solo M o F)
+    /**
+     * Metodo para validar que el usuario ingrese "M" o "F".
+     */
+    private String validarGenero() {
+        String genero;
+        while (true) {
+            genero = scanner.nextLine().toUpperCase();
+            if (genero.equals("M") || genero.equals("F")) {
+                return genero;
+            } else {
+                System.out.println("Error: Debe ingresar 'M' o 'F'.");
+            }
+        }
+    }
+// PLUS DE ACTIVIDAD VALIDACION SUELDO (SolO numeros positivos)
+    /**
+     * Metodo para validar que el usuario ingrese un número decimal positivo.
+     */
+    private double validarDoublePositivo() {
+        double numero;
+        while (true) {
+            try {
+                numero = Double.parseDouble(scanner.nextLine());
+                if (numero > 0) {
+                    return numero;
+                } else {
+                    System.out.println("Error: Debe ingresar un número positivo.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Debe ingresar un número válido.");
+            }
+        }
     }
 }

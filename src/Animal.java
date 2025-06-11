@@ -33,7 +33,7 @@ public class Animal { // Clase animal con atributos privados: nombre, tipo y gé
 
     //Se sobreescribe `toString()` con @Override para mostrar validar y asegurar reemplazando correctamente. nombre del animal.
     /**
-     * Método toString para representar el animal como una cadena de texto.
+     * Metodo toString para representar el animal como una cadena de texto.
      * @return Nombre del animal.
      */
     @Override
@@ -41,4 +41,5 @@ public class Animal { // Clase animal con atributos privados: nombre, tipo y gé
         return nombre;
     }
 }
+
 
