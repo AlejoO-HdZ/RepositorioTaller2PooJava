@@ -51,9 +51,9 @@ public class ClasePrincipalAnimales { // Clase principal animal
      * - Usa `substring(0,1).toUpperCase()` para capitalizar la primera letra del tipo.
      */
     //1d) Almacenamiento en el map la clase y muestra luego los animales.
-    //1e) El resultado se muestra en consola al fianlizar el pedido de datos:
+    //1e) El resultado se muestra en consola al finalizar el pedido de datos:
     private void mostrarClasificacion() {
-        System.out.println("\nClasificación de Animales:");
+        System.out.println("\nClasificación de Animales:"); //muestra en consola al finalizar el pedido de datos:
         clasificacion.forEach((tipo, lista) -> {
             System.out.println(tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ":");
             lista.forEach(animal -> System.out.println("  " + animal));
